@@ -15,6 +15,12 @@
 
 {{{ body }}}
 
+{{#if error}}
+  <div class= "error-popup">
+    {{error}}
+  </div>
+  {{/if}}
+
   <div class="flex-column justify-space-around">
     <header class="main-image">
     <div class="hero-container">

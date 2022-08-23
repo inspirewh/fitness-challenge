@@ -1,72 +1,33 @@
-// GET homepage
 
-//show the list of weeks (week 1-6) (index/landing)
 
-//GET Weekly content
 
-//show the list of workouts 1-5
 
-//GET workout -lib
+/// create 
 
-//Show specific workouts
+// post request to handle progress form submission
 
-//POST "mark as complete"
 
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+//  get the data from the req , burpees, pushups ....
 
-class User extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
+//  user_id ( get from req. session)
+// week_num 
+// get all the user progresses 
+// (Progress.findAll( where user_id = req.session.userId )) --- >progresses
 
-User.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
-      },
-    },
-  },
-  {
-    hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      },
-    },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user',
-  }
-);
+// week num -> progresses' length + 1
 
-module.exports = User;
+
+
+
+
+///homepages
+// we should have all the user's progresses
+// problem is: determine which workout week to show
+// find out the largest week num
+
+// const weekNUm = 5;
+
+{{#if workoutWeek < weekNum}}
+<button>Done</button>
+
+// eg if largest week is 4, that means you want to show week 5

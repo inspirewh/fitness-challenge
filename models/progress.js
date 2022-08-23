@@ -27,6 +27,10 @@ Progress.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    week_num: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   },
   {
     sequelize,
@@ -36,4 +40,4 @@ Progress.init(
   }
 );
 
-module.exports = User;
+module.exports = Progress;

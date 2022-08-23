@@ -10,41 +10,28 @@ router.get('/login', (req, res) => {
 })
 
 //post login request (for user to login) - action end point for login
-router.post('/login', async(req, res) =>{
-
     //login the user
 
-  try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
 
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
+        res.status(400).render('login', {
+            email: 'Incorrect credentials, please check your email or password' 
+        });
+      
+        return;
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .status(400).render('login', {
+            email: 'Incorrect credentials, please check your email or password' 
+        });
       return;
     }
 
