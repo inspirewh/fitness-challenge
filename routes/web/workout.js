@@ -68,21 +68,23 @@ const workouts1_5 = [
     
   ];
 
-//get all the workouts
+//goal: display workouts 1-5 under the week 1, 3, 5 cards 
+//goal: display workouts 6-10 under the week 2, 4, 6 cards 
+
+//get all the workouts 
 
   router.get('/', async (req, res) => {
     res.render('all');
   });
 
 //get workout  
-  router.get('/workout/:num', async (req, res) => {
+  router.get('/week/:num', async (req, res) => {
     const workout_a = workouts1_5[req.params.num - 1]; //model
     const workout_b = workouts6_10[req.params.num - 1]; //model
 
-//reder workout template, select correct workout to render in the remplate based on ID of the workout
-    res.render('workout', workout_a); // view
-    res.render('workout', workout_b); //view
-
+//reder workout template, select correct workout to render in the template based on ID of the workout
+    res.render('week 1', 'week 3', 'week 5', workout_a); // view
+    res.render('week 2', 'week 4', 'week 6', workout_b); //view
   })
 
   module.exports = router;

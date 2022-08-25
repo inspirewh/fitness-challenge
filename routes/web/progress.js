@@ -20,6 +20,11 @@ router.get('/', async(req,res) =>{
     })
 })
 
+//for (let i = 0; i < progresses.length; index++) {
+ //   const week_num = array[index];
+ //   for (let i = 0; )
+//}
+
 // week_num 
 // get all the user progresses 
 // (Progress.findAll( where user_id = req.session.userId )) --- >progresses
