@@ -1,4 +1,4 @@
-const Progress = require("./progress");
+const Progress = require("./Progress");
 const User = require("./User");
 
 

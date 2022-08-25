@@ -29,7 +29,8 @@ router.post('/login', async (req, res) => {
 
     if (!validPassword) {
       res
-        .status(400).render('login', {
+        .status(400)
+        .render('login', {
             email: 'Incorrect credentials, please check your email or password' 
         });
       return;
@@ -39,13 +40,15 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.redirect('/');
     });
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).render('login', {
+      email: 'Incorrect credentials, please check your email or password' 
+  });
   }
-});
+
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -61,9 +64,6 @@ module.exports = router;
 
 
 
-})
 //sign up page
 
 //post request for user to sign up
-
-module.exports = router;

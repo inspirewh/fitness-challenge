@@ -1,5 +1,7 @@
+const Progress = require('../..models/Progress');
+const router = require('expresss').Router();
 
-
+// when the user visits the homepage render to show each week depending on how many progrerss forms have been completed
 
 
 /// create 
@@ -10,9 +12,20 @@
 //  get the data from the req , burpees, pushups ....
 
 //  user_id ( get from req. session)
+router.get('/', async(req,res) =>{
+    
+    const progresses = await Progress.findAll(user_id = req.session.user_id);
+    res.render('home', {
+        progresses: progresses.get({plain: true})
+    })
+})
+
 // week_num 
 // get all the user progresses 
 // (Progress.findAll( where user_id = req.session.userId )) --- >progresses
+
+
+
 
 // week num -> progresses' length + 1
 
@@ -27,7 +40,9 @@
 
 // const weekNUm = 5;
 
-{{#if workoutWeek < weekNum}}
-<button>Done</button>
+//{{#if workoutWeek < weekNum}}
+//<button>Done</button>
 
 // eg if largest week is 4, that means you want to show week 5
+
+module.exports = router
