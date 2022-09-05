@@ -3,7 +3,7 @@ const router = require('express').Router();
 //contain authentication routes
 
 
-//login page
+//login page > render login.handlebars
 
 router.get('/login', (req, res) => {
     res.render("login")
@@ -11,8 +11,6 @@ router.get('/login', (req, res) => {
 
 //post login request (for user to login) - action end point for login
     //login the user
-
-
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -48,6 +46,7 @@ router.post('/login', async (req, res) => {
       email: 'Incorrect credentials, please check your email or password' 
   });
   }
+})
 
 
 router.post('/logout', (req, res) => {
@@ -61,9 +60,3 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-
-
-
-//sign up page
-
-//post request for user to sign up

@@ -1,15 +1,15 @@
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" />
+{{#if error}}
+<div>
+  {{error}}
+</div>
+{{/if}}
+
 
 {{!-- when you submit this form it contains 2 inputs email & password..."action is the url you want to submit the info to" --}}
 {{!--when you submit this form this form will send a post request to end point action="/login" --}}
 <form action="/login" methond="post">
-
-
-</form>
-{{!-- email input --}}
-
-{{!-- password input --}}
-
-
 <div class="bg">
   <div class="container login-container">
     <div style="margin-top: 80px;" class="jumbotron">
@@ -18,10 +18,12 @@
       <h4 class="mt-4 text-white text-center">Are you up for the challenge?</h4>
       <form>
         <div class="form-group">
+{{!-- email input --}}
           <label for="formGroupExampleInput">Email</label>
           <input type="text" name="email" class="form-control text-white text-left login-label" id="formGroupExampleInput" placeholder="Email address">
         </div>
         <div class="form-group">
+{{!-- password input --}}
           <label for="formGroupExampleInput2">Password</label>
           <input type="text" name="password" class="form-control text-white text-left login-label" id="formGroupExampleInput2" placeholder="Password">
           <button class="btn btn-primary btn-m mt-4 main-Btn text-center" type="submit">Sign in</button>
@@ -32,4 +34,4 @@
       </form>
     </div>
   </div>
-  <script src="/assets/js/index.js"></script>
+</form>

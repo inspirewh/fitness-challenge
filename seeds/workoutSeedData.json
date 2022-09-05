@@ -1,0 +1,72 @@
+[
+    {
+      "workout_num": 1,
+      "workout_title": "Full Body Furnace | Time: 20 mins",
+      "workout_description": "FULL BODY Home Workout that is 20 minutes long including modified exercise options for all fitness levels",
+      "src": "https://www.youtube.com/embed/ceJ7B46QPh4",
+      "href":"/workout/1"
+    },
+    {
+        "workout_num": 2,
+        "workout_title": "Fat Burner | Time: 20 mins",
+        "workout_description": "Join us for a home workout that targets the full body, great for fat burn or increasing fitness.",
+        "src": "https://www.youtube.com/embed/u2a9Kyqiyk8",
+        "href":"/workout/2"
+    },
+    {
+        "workout_num": 3,
+        "workout_title": "Abs of steel | Time: 30 mins",
+        "workout_description": "Ab workout at home, using no equipment and suitable for beginners (modified exercises included).",
+        "src": "https://www.youtube.com/embed/dRmBeSbybec",
+        "href":"/workout/3"
+    },
+    {
+        "workout_num": 4,
+        "workout_title": "HIIT it | Time: 30 mins",
+        "workout_description": "20 minute high intensity interval training to target your full body. Home workout that you can do anywhere.",
+        "src": "https://www.youtube.com/embed/G7o5YOYxp60",
+        "href":"/workout/4"
+    },
+    {
+        "workout_num": 5,
+        "workout_title": "Home Burn | Time: 30 mins",
+        "workout_description": "A home workout to target fat burn and burn calories. Beginner friendly with modified exercises.",
+        "src": "https://www.youtube.com/embed/XDAzFr7tzeI",
+        "href":"/workout/5"
+    },
+    {
+        "workout_num": 6,
+        "workout_title": "Lower Body Burn | Time: 30 mins",
+        "workout_description": "This 20 minute LEGS WORKOUT targets your lower body to help tone, burn fat and shape your legs.",
+        "src": "https://www.youtube.com/embed/Vx8g_lCFlmI",
+        "href":"/workout/6"
+    },
+    {
+        "workout_num": 7,
+        "workout_title": "Total Body HIIT | Time: 30 mins",
+        "workout_description": "Full body home hiit workout to target fat burn and improve fitness.",
+        "src": "https://www.youtube.com/embed/U2srs0E2mmQ",
+        "href":"/workout/7"
+    },
+    {
+        "workout_num": 8,
+        "workout_title": "Anwhere, Anytime Abs | Time: 30 mins",
+        "workout_description": "Abs workout that you can do at home, in the gym or anywhere you like because it is equipment free.",
+        "src": "https://www.youtube.com/embed/mlXd26GgnBg",
+        "href":"/workout/8"
+    },
+    {
+        "workout_num": 9,
+        "workout_title": "Anwhere, Anytime Abs | Time: 30 mins",
+        "workout_description": "Join me for a Full body home workout. Beginner friendly with modified exercises.",
+        "src": "https://www.youtube.com/embed/uPBxQ9qA6-I",
+        "href":"/workout/9"
+    },
+    {
+        "workout_num": 10,
+        "workout_title": "Anwhere, Anytime Abs | Time: 30 mins",
+        "workout_description": "Full Body Workout at home, beginner friendly, modified exercises option, 20 minute workout that targets fat burn.",
+        "src": "https://www.youtube.com/embed/tXUC9VqGBDE",
+        "href":"/workout/10"
+    }
+]
