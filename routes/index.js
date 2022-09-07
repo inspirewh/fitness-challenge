@@ -1,13 +1,7 @@
 const router = require('express').Router();
-const auth = require('./web/auth');
-//const progress = require('./web/progress');
-
-router.use(auth);
-//router.use(progress);
+const apiRoutes = require('./api');
 
 
-
-
+router.use(apiRoutes);
 
 module.exports = router;
-

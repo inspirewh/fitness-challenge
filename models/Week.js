@@ -10,18 +10,18 @@ class Week extends Model {
 
 Week.init(
   {
-    week_num: {
+    number: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
 
-    src: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     
-    week_description: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false,
     },

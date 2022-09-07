@@ -1,0 +1,14 @@
+      <!-- Individual Workout Page - shhows video & text-->
+{{> home-header}}
+
+  <section>
+    <div class="text-container col-8">
+      <h5 class="welcome-header"> Workout Number {{workout_num}} | {{workout_title}} </h5>
+      <p class="welcome-text">{{workout_description}}</p>
+      <a href="/" class="btn main-Btn btn-primary" role="button">Go back</a>
+    </div> 
+    </section>
+
+{{!-- display indivdividual workouts--}}
+{{>workout-individual}}
+

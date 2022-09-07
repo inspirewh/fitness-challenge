@@ -1,5 +1,5 @@
-//const Progress = require('../../models/Progress');
-//const router = require('express').Router();
+const router = require('express').Router();
+const { Progress } = require('../../models');
 
 // when the user visits the homepage render to show each week depending on how many progrerss forms have been completed
 

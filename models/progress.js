@@ -10,12 +10,8 @@ class Progress extends Model {
 
 Progress.init(
   {
-    user_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    progress_id: {
-      type: DataTypes.STRING,
+    user_id: { //foreign key
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     pushups: {
@@ -30,10 +26,9 @@ Progress.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    week_num: {
+    week_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
     }
   },
   {

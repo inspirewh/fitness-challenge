@@ -26,13 +26,8 @@ Workout.init(
       allowNull: false,
     },
 
-    src: {
+    youtube: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    
-    href: {
-      type:DataTypes.STRING,
       allowNull: false,
     },
   },

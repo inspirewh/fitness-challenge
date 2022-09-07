@@ -1,8 +1,8 @@
 const sequelize = require("../config/connection");
 const { faker } = require('@faker-js/faker');
 const { User, Progress, Workout, Week } = require('../models');
-const weekSeedData = require('../seeds/weekSeedData.json')
-const workoutSeedData = require('../seeds/workoutSeedData.json')
+const weekSeed = require('./weekSeed')
+const workoutSeed = require('./workoutSeed')
 
     
 
@@ -28,7 +28,7 @@ async function seedUsers(number = 10){
 
 //seed progress (fitness test)
 //user pools is the users you want to seed
-async function seedProgress(userPools, progressPools, number = 10){
+async function seedProgress(userPools, weekPools, number = 10){
     //an array of creates users
     
     const models = [];
@@ -36,12 +36,11 @@ async function seedProgress(userPools, progressPools, number = 10){
     for (let index = 0; index < number; index++) {
 
         const created = await Progress.create({
-            user_id: faker.helpers.arrayElement(userPools), id,
-            progress_id: faker.datatype.number(), 
+            user_id: faker.helpers.arrayElement(userPools).id, 
             pushups: faker.datatype.number(),
             burpees: faker.datatype.number(),
             situps: faker.datatype.number(),
-            week_num: faker.datatype.number(progressPools),
+            week_id: faker.helpers.arrayElement(weekPools).id,
         });
         
         models.push(created);
@@ -51,10 +50,9 @@ async function seedProgress(userPools, progressPools, number = 10){
 
 async function seed(){
     const users = await seedUsers();
-    const progresses = await seedProgress();
-    
-    await Week.bulkCreate(weekSeedData);
-    await Workout.bulkCreate(workoutSeedData);
+    const weekData = await weekSeed();
+    const progresses = await seedProgress(users, weekData);
+
 
 }
 

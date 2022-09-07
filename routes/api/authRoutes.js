@@ -1,13 +1,20 @@
 const router = require('express').Router();
+const { User } = require('../../models');
+
 
 //contain authentication routes
-
+router.get('/signup', (req, res) => {
+  res.render('signup', {layout: 'fullpage'})
+  
+});
 
 //login page > render login.handlebars
 
 router.get('/login', (req, res) => {
-    res.render("login")
-})
+    res.render('login', {layout: 'fullpage'})
+    
+});
+
 
 //post login request (for user to login) - action end point for login
     //login the user
@@ -17,7 +24,7 @@ router.post('/login', async (req, res) => {
 
     if (!userData) {
         res.status(400).render('login', {
-            email: 'Incorrect credentials, please check your email or password' 
+            error: 'Incorrect credentials, please check your email or password' 
         });
       
         return;
