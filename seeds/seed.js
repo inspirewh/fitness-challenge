@@ -51,7 +51,8 @@ async function seedProgress(userPools, weekPools, number = 10){
 async function seed(){
     const users = await seedUsers();
     const weekData = await weekSeed();
-    const progresses = await seedProgress(users, weekData);
+    //const progresses = await seedProgress(users, weekData);
+    const workout = await workoutSeed();
 
 
 }

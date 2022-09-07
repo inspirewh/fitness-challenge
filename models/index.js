@@ -14,6 +14,15 @@ Progress.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
+Week.hasMany(Progress, {
+    foreignKey: 'week_id',
+    onDelete: 'CASCADE',
+});
+
+Week.belongsTo(Progress, {
+    foreignKey: 'week_id'
+})
+
 
 
 

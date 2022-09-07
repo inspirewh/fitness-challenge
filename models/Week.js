@@ -10,10 +10,15 @@ class Week extends Model {
 
 Week.init(
   {
-    number: {
+    id:{
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
+    },
+    number: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
 
     image: {

@@ -21,10 +21,9 @@ const workoutData = [
     },
     {
       workout_num: 4,
-      orkout_title: 'HIIT it | Time: 30 mins',
+      workout_title: 'HIIT it | Time: 30 mins',
       workout_description: '20 minute high intensity interval training to target your full body. Home workout that you can do anywhere.',
       youtube: 'https://www.youtube.com/embed/G7o5YOYxp60',
-      href:'/workout/4',
     },
     {
       workout_num: 5,

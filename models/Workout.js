@@ -1,15 +1,17 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Workout extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
 }
 
 Workout.init(
   {
+    id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     workout_num: {
       type: DataTypes.INTEGER,
       allowNull: false,

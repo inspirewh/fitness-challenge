@@ -20,10 +20,10 @@ router.get("/week/:num", async (req, res, next) => {
   }
 });
 
-router.get('/workout/:id', (req, res) => {
-  res.render('workouts', {layout: 'mininav'})
+//router.get('/workout/:id', (req, res) => {
+  //res.render('workouts', {layout: 'mininav'})
   
-});
+//});
 
 //get individual workout on their respective page e.g workout 1 on workout 1.handlebar
 router.get("/workout/:id", async (req, res, next) => {
@@ -35,7 +35,7 @@ router.get("/workout/:id", async (req, res, next) => {
     });
 
     // //render to handlebars 
-    res.render("workout-page", {layout: 'mininav',
+    res.render("workout-page", {workout, layout: 'mininav',
       loggedIn: req.session.loggedIn,
     });
   } catch (error) {
