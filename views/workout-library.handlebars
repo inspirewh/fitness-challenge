@@ -1,0 +1,66 @@
+  <section>
+    <div class="text-container col-8">
+      <h5 class="welcome-header"> WORKOUT LIBRARY </h5>
+      <p class="welcome-text">It is recommended you stick to the schedule but if you take a rest day or miss a workout, you can swap a rest day. For example, if you rest on Wednesday, train on Saturday or Sunday. Always try to stick to completing 5 workouts a week with 2 complete rest days for recovery.</p>
+      <p>Workout Schedule: <br> On Weeks 1, 3 and 5 complete workouts 1-5 <br> On Weeks 2, 4 and 5 complete workouts 6-10 </p>
+      <p>Fitness and Progress Testing: To ensure we can track your progress on the program and ensure consistent results, after each week is complete, it's time to complete your fitness test to assess your progress. Click on the Complete Fitness Test to log your results.</p>
+      <a href="/" class="btn main-Btn btn-primary" role="button">Go back</a>
+    </div> 
+    </section>
+
+{{!-- display all 10 workouts--}}
+  <section class="container thumbnail-container">
+    <div class="row">
+ {{#each workoutList as |workout|}}
+  {{> workout-list}}
+  {{/each}}
+        <div class="card col-12 col-lg-4 col-md-6">
+        <a href="./weekly-content\week1.html"><img class="card-img-top" src="/assets/css/images/Cardio Blast Thumbnail.jpg" alt="Card image cap"></a>
+        <div class="card-body">  
+          <h4 class="card-title">Complete Fitness Test</h4>
+          <p class="card-text">
+            Simply set the timer for 60 seconds and complete as many reps as possible for that exercise. Repeat for each of the 3 exercises.<br>          
+          </p> 
+          <button type="button" class="btn main-Btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Complete Fitness Test</button>
+        </div>
+      </div>
+  </section>
+
+
+  <section>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title welcome-header" id="exampleModalLongTitle">It's fitness testing time...</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Before you move onto the next week let's check in on your progress. <br> Set the timer for 60 seconds and complete as many reps of each of the below exercise (with correct technique) and enter the number of reps you complete.</p>
+        </div>
+        <form>
+          <div class="form-group" id="popup-form">
+            <label for="exercise-pushups" class="col-form-label">Pushups</label>
+            <input type="text" class="form-control form-text" id="exercise-pushups" placeholder="Pushups completed">
+          </div>
+          <div class="form-group" id="popup-form">
+            <label for="exercise-situps" class="col-form-label">Situps</label>
+            <input type="text" class="form-control form-text" id="exercise-situps" placeholder="Situps completed">
+          </div>
+          <div class="form-group" id="popup-form">
+            <label for="exercise-burpees" class="col-form-label">Burpees</label>
+            <input type="text" class="form-control form-text" id="exercise-burpees" placeholder="Burpees completed">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary popup-btn" id="progressBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script src="/assets/js/progress.js"></script>

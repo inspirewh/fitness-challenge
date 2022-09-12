@@ -1,0 +1,18 @@
+  <section>
+    <div class="text-container col-8">
+      <h5 class="welcome-header"> CHECKOUT YOUR PROGRESS</h5>
+      <p class="welcome-text">Compare all of your fitness and progress tests to see how you are tracking on the program.</p>
+      <a href="/" class="btn main-Btn btn-primary" role="button">Go back</a>
+    </div> 
+    </section>
+
+{{!-- display all progress forms completed--}}
+<section class="container thumbnail-container">
+    <div class="row">
+ {{#each progressList as |progress|}}
+  {{> progress-form}}
+  {{/each}}
+
+
+  <script src="/assets/js/index.js"></script>
+

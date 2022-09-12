@@ -1,0 +1,39 @@
+[
+    {
+        "number": 1,
+        "image": "week1.png",
+        "href": "/library",
+        "description": "week 1 text - Some quick example text to build on the card title and make up the bulk of the card content"
+    },
+    {
+        "number": 2,
+        "image": "week2.png",
+        "href": "/library",
+        "description": "week 2 text - Some quick example text to build on the card title and make up the bulk of the card content"
+    },
+    {
+        "number": 3,
+        "image": "week3.png",
+        "href": "/library",
+        "description": "week 1 text - Some quick example text to build on the card title and make up the bulk of the card content"
+    },
+    {
+        "number": 4,
+        "image": "week4.png",
+        "href": "/library",
+        "description": "week 4 text - Some quick example text to build on the card title and make up the bulk of the card content"
+    },
+    {
+        "number": 5,
+        "image": "week5.png",
+        "href": "/library",
+        "description": "week 6 text - Some quick example text to build on the card title and make up the bulk of the card content"
+    },
+    {
+        "number": 6,
+        "image": "week6.png",
+        "href": "/library",
+        "description": "week 6 text - Some quick example text to build on the card title and make up the bulk of the card content"
+    }
+
+]

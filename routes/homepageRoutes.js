@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Workout, Week, Progress} = require('../models');
 
 
 //contain authentication routes
@@ -80,5 +80,93 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+// route to get all workouts to workout library
+router.get('/library', async (req, res) => {
+  const workoutListData = await Workout.findAll().catch((err) => { 
+      res.json(err);
+    });
+      const workoutList = workoutListData.map((workout) => workout.get({ plain: true }));
+      res.render('workout-library', { workoutList });
+    });
+
+//get one workout by ID
+router.get('/workout/:id', async (req, res) => {
+    try{ 
+        const workoutData = await Workout.findByPk(req.params.id);
+        if(!workoutData) {
+            res.status(404).json({message: 'No workout with this id!'});
+            return;
+        }
+        const workout = workoutData.get({ plain: true });
+        console.log(workout)
+        res.render('workout-individual', {workout, layout: 'mininav',
+          loggedIn: req.session.loggedIn,
+        });
+      } catch (err) {
+          res.status(500).json(err);
+      };     
+  });
+
+// route to get all progress forms on congratulations page 
+router.get('/progress', async (req, res) => {
+  const progresslistData = await Progress.findAll().catch((err) => { 
+      res.json(err);
+    });
+      const progressList = progresslistData.map((progress) => progress.get({ plain: true }));
+      res.render('progress', { progressList });
+    });
+
+
+// Get all workouts for the weekly pages
+router.get("/week/:num", async (req, res, next) => {
+    // Get all workouts in workout table >> if have time split workouts 1-5 on odd week and 6-10 on even weeks
+    try {
+      const workouts = await Workout.findAll({
+        raw: true,
+        nest: true,
+      });
+  
+      res.render("workouts", {
+        loggedIn: req.session.loggedIn,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+      console.log(err);
+    }
+  });
+
+  //get one workout by ID
+router.get('/workout/:id', async (req, res) => {
+    try{ 
+        const workoutData = await Workout.findByPk(req.params.id);
+        if(!workoutData) {
+            res.status(404).json({message: 'No workout with this id!'});
+            return;
+        }
+        const workout = workoutData.get({ plain: true });
+        console.log(workout)
+        res.render('workout-individual', {workout, layout: 'mininav',
+          loggedIn: req.session.loggedIn,
+        });
+      } catch (err) {
+          res.status(500).json(err);
+      };     
+  });
+
+
+// route to get all weeks to main homepage
+router.get('/', async (req, res) => {
+  const weekListData = await Week.findAll().catch((err) => { 
+      res.json(err);
+    });
+      const weekList = weekListData.map((week) => week.get({ plain: true }));
+      res.render('homepage', { weekList });
+    });
+
+
+  
+
+
 
 module.exports = router;

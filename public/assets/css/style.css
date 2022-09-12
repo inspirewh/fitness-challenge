@@ -7,7 +7,7 @@ body {
 }
 
 .bg {
-  background-image: url("./Cardio\ Blast\ Thumbnail.jpg");
+  background-image: url("./images/Cardio\ Blast\ Thumbnail.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,7 +56,7 @@ body {
 
 .main-image{
   position: relative;
-  background: url("./Cardio\ Blast\ Thumbnail.jpg") no-repeat center;
+  background: url("./images/Cardio\ Blast\ Thumbnail.jpg") no-repeat center;
   background-size: cover;
   height: 350px;
   overflow: hidden;

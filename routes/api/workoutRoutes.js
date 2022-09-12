@@ -1,24 +1,65 @@
 const router = require("express").Router();
-const { raw } = require("express");
-const { Workout } = require('../../models');
+const { Workout, Week } = require('../../models');
 
-// Get all workouts for the weekly pages
-router.get("/week/:num", async (req, res, next) => {
-  // Get all workouts in workout table >> if have time split workouts 1-5 on odd week and 6-10 on even weeks
+// route to create/add a workout using async/await
+router.post('/', async (req, res) => {
+  try { 
+    const weekData = await Week.create({
+    number: req.body.number,
+    image: req.body.image,
+    description: req.body.description,
+  });
+  // if the week is successfully created, the new response will be returned as json
+  res.status(200).json(weekData)
+} catch (err) {
+  res.status(400).json(err);
+}
+});
+
+
+// route to create/add a workout using async/await
+router.post('/workout', async (req, res) => {
+  try { 
+    const workoutData = await Workout.create({
+    workout_num: req.body.workout_num,
+    workout_title: req.body.workout_title,
+    workout_description: req.body.workout_description,
+    youtube: req.body.youtube,
+  });
+  // if the workout is successfully created, the new response will be returned as json
+  res.status(200).json(workoutData)
+} catch (err) {
+  res.status(400).json(err);
+}
+});
+
+router.put('/:id', async (req, res) => {
   try {
-    const workouts = await Workout.findAll({
-      raw: true,
-      nest: true,
-    });
-
-    res.render("workouts", {
-      loggedIn: req.session.loggedIn,
-    });
+    const workout = await Workout.update(
+      {
+        workout_num: req.body.workout_num,
+        workout_title: req.body.workout_title,
+        workout_description: req.body.workout_description,
+        youtube: req.body.youtube,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(workout);
   } catch (err) {
     res.status(500).json(err);
-    console.log(err);
   }
 });
+
+
+module.exports = router;
+
+
+
+
 
 //router.get('/workout/:id', (req, res) => {
   //res.render('workouts', {layout: 'mininav'})
@@ -26,23 +67,23 @@ router.get("/week/:num", async (req, res, next) => {
 //});
 
 //get individual workout on their respective page e.g workout 1 on workout 1.handlebar
-router.get("/workout/:id", async (req, res, next) => {
-  try {
+//router.get("/workout/:id", async (req, res, next) => {
+  //try {
     //getting workout by parrameter
-    const workout = await Workout.findByPk(req.params.id, {
-      raw: true,
-      nest: true,
-    });
+    //const workout = await Workout.findByPk(req.params.id, {
+      //raw: true,
+      //nest: true,
+    //});
 
     // //render to handlebars 
-    res.render("workout-page", {workout, layout: 'mininav',
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (error) {
-    res.status(500).json(error);
-    console.log(error);
-  }
-});
+    //res.render("workout-page", {workout, layout: 'mininav',
+      //loggedIn: req.session.loggedIn,
+    //});
+  //} catch (error) {
+    //res.status(500).json(error);
+    //console.log(error);
+ // }
+//});
 
 
 

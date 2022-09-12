@@ -9,20 +9,20 @@
 {{!-- when you submit this form it contains 2 inputs email & password..."action is the url you want to submit the info to" --}}
 {{!--when you submit this form this form will send a post request to end point action="/login" --}}
 <div class="row vertical-center">
-      <form action="/login" methond="post" class="mx-auto col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-3 col-lg-offset-5">
+      <form class="mx-auto col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-3 col-lg-offset-5">
           <p>
             <label class="sr-only" for="">Email Address</label>
             <input class="form-control" type="email" placeholder="Email Address" required autofocus>
           </p>
           <p>
             <label class="sr-only" for="">Password</label>
-            <input class="form-control" type="email" placeholder="Password" required>
+            <input class="form-control" type="password" placeholder="Password" required>
           </p>
-          <button class="btn btn-primary btn-block main-Btn" type="sumbit">Sign In</button>
-          <p class="text-white text-center sub-text">Don't have an account? Sign Up Here <br> Terms of Service </p>
+          <button class="btn btn-primary btn-block main-Btn" id="login-form" >Sign In</button>
+          <p class="text-white text-center sub-text">Don't have an account? <a href="/signup"> Signup Here </a></p>
         </form>
     </div>
   </div>
 </div>
 
-
+<script src="./assets/js/login.js"></script>
