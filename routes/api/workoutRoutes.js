@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Workout, Week } = require('../../models');
 
-// route to create/add a workout using async/await
+// route to create/add a week using async/await
 router.post('/', async (req, res) => {
   try { 
     const weekData = await Week.create({

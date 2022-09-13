@@ -86,8 +86,9 @@ router.get('/library', async (req, res) => {
   const workoutListData = await Workout.findAll().catch((err) => { 
       res.json(err);
     });
+    console.log(req.session.logged_in)
       const workoutList = workoutListData.map((workout) => workout.get({ plain: true }));
-      res.render('workout-library', { workoutList });
+      res.render('workout-library', { workoutList, loggedIn:req.session.logged_in });
     });
 
 //get one workout by ID
@@ -101,12 +102,13 @@ router.get('/workout/:id', async (req, res) => {
         const workout = workoutData.get({ plain: true });
         console.log(workout)
         res.render('workout-individual', {workout, layout: 'mininav',
-          loggedIn: req.session.loggedIn,
+          loggedIn: req.session.logged_in,
         });
       } catch (err) {
           res.status(500).json(err);
       };     
   });
+
 
 // route to get all progress forms on congratulations page 
 router.get('/progress', async (req, res) => {
@@ -128,7 +130,7 @@ router.get("/week/:num", async (req, res, next) => {
       });
   
       res.render("workouts", {
-        loggedIn: req.session.loggedIn,
+        loggedIn: req.session.logged_in,
       });
     } catch (err) {
       res.status(500).json(err);
@@ -147,7 +149,7 @@ router.get('/workout/:id', async (req, res) => {
         const workout = workoutData.get({ plain: true });
         console.log(workout)
         res.render('workout-individual', {workout, layout: 'mininav',
-          loggedIn: req.session.loggedIn,
+          loggedIn: req.session.logged_in,
         });
       } catch (err) {
           res.status(500).json(err);
@@ -161,7 +163,7 @@ router.get('/', async (req, res) => {
       res.json(err);
     });
       const weekList = weekListData.map((week) => week.get({ plain: true }));
-      res.render('homepage', { weekList });
+      res.render('homepage', { weekList, logged_in: req.session.logged_in });
     });
 
 
