@@ -1,7 +1,7 @@
-// const Progress = require('./Progress');
 const User = require("./User");
 const Workout = require("./Workout");
 const Week = require("./Week");
+const Progress = require('./Progress');
 
 
 // A user can have many progress forms

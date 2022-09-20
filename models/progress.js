@@ -1,10 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./User');
-const Week = require('./Week');
 
-class Progress extends Model {
-}
+class Progress extends Model {}
 
 Progress.init(
   {
@@ -29,7 +26,7 @@ Progress.init(
     week_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: Week,
+        model: 'week',
         key: 'id'
       },
       defaultValue: 1
@@ -38,7 +35,7 @@ Progress.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: User,
+        model: 'user',
         key: 'id'
       }
     },
@@ -46,10 +43,10 @@ Progress.init(
   },
   {
     sequelize,
-    freezeTableName: true,
     timestamps: true,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'progress',
+    modelName: 'progress'
   }
 );
 
