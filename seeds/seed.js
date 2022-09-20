@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const { faker } = require('@faker-js/faker');
-const { User, Progress, Workout, Week } = require('../models');
+const { User, Progres, Workout, Week } = require('../models');
 const weekSeed = require('./weekSeed.json')
 const workoutData = require('./workoutSeed.json')
 
@@ -35,7 +35,7 @@ async function seedProgress(userPools, weekPools, number = 10){
 
     for (let index = 0; index < number; index++) {
 
-        const created = await Progress.create({
+        const created = await Progres.create({
             user_id: faker.helpers.arrayElement(userPools).id, 
             pushups: faker.datatype.number({min:5,max:20}),
             burpees: faker.datatype.number({min:5,max:20}),

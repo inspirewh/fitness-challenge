@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { restart } = require('nodemon');
-const { Progress } = require('../../models');
+const { Progres } = require('../../models');
 
 // when the user visits the homepage render to show each week depending on how many progrerss forms have been completed
 
@@ -12,7 +12,7 @@ const { Progress } = require('../../models');
 //  user_id ( get from req. session)
 router.get('/', async(req,res) =>{
     
-const progresses = await Progress.findOne({ where: { user_id: req.session.user_id }})
+const progresses = await Progres.findOne({ where: { user_id: req.session.user_id }})
 console.log(progresses)
   res.render('home', {
   progresses: progresses.get({plain: true})
@@ -22,7 +22,7 @@ console.log(progresses)
 //create api route to post
 // post request to handle progress form submission
 router.post('/', async(req,res) =>{
-  const postProgress = await Progress.create({
+  const postProgress = await Progres.create({
     pushups: req.body.pushups,
     burpees: req.body.burpees,
     situps: req.body.situps,

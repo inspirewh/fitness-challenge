@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Workout, Week, Progress} = require('../models');
+const { User, Workout, Week, Progres} = require('../models');
 
 
 //contain authentication routes
@@ -112,7 +112,7 @@ router.get('/workout/:id', async (req, res) => {
 
 // route to get all progress forms on congratulations page 
 router.get('/progress', async (req, res) => {
-  const progresslistData = await Progress.findAll().catch((err) => { 
+  const progresslistData = await Progres.findAll().catch((err) => { 
       res.json(err);
     });
       const progressList = progresslistData.map((progress) => progress.get({ plain: true }));
