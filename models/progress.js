@@ -1,13 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-const Week = require('./Week');
 const User = require('./User');
+const Week = require('./Week');
 
 class Progress extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
 }
 
 Progress.init(

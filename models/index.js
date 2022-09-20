@@ -1,4 +1,4 @@
-const Progress = require("./Progress");
+// const Progress = require('./Progress');
 const User = require("./User");
 const Workout = require("./Workout");
 const Week = require("./Week");

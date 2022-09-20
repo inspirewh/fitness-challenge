@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 
+
 //contain authentication routes
 router.get('/signup', (req, res) => {
   res.render('signup', {layout: 'fullpage'})
