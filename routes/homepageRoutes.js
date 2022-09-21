@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const { User, Workout, Week, Progres} = require('../models');
 
+// route homepage - get all weeks to main homepage
+router.get('/', async (req, res) => {
+  const weekListData = await Week.findAll().catch((err) => { 
+      res.json(err);
+    });
+      const weekList = weekListData.map((week) => week.get({ plain: true }));
+      res.render('homepage', { 
+        weekList, loggedIn: req.session.logged_in, name: req.session.name 
+      });
+    });
+    
 
 //contain authentication routes
 router.get('/signup', (req, res) => {
@@ -24,62 +35,16 @@ router.post('/users', async (req, res) => {
   }
 });
 
-//login page > render login.handlebars
+//login page > render login page
 router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+    res.redirect('/');
+    return
+    }
     res.render('login', {layout: 'fullpage'})
-    
 });
 
 
-//post login request (for user to login) - action end point for login
-    //login the user
-router.post('/login', async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
-    if (!userData) {
-        res.status(400).render('login', {
-            error: 'Incorrect credentials, please check your email or password' 
-        });
-      
-        return;
-    }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .render('login', {
-            email: 'Incorrect credentials, please check your email or password' 
-        });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.redirect('/');
-    });
-
-  } catch (err) {
-    res.status(400).render('login', {
-      email: 'Incorrect credentials, please check your email or password' 
-  });
-  }
-})
-
-
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
 
 // route to get all workouts to workout library
 router.get('/library', async (req, res) => {
@@ -112,7 +77,12 @@ router.get('/workout/:id', async (req, res) => {
 
 // route to get all progress forms on congratulations page 
 router.get('/progress', async (req, res) => {
-  const progresslistData = await Progres.findAll().catch((err) => { 
+  const progresslistData = await Progres.findAll({
+    where: {
+      user_id: req.session.user_id
+    }
+  }).catch((err) => {
+     
       res.json(err);
     });
       const progressList = progresslistData.map((progress) => progress.get({ plain: true }));
@@ -157,14 +127,6 @@ router.get('/workout/:id', async (req, res) => {
   });
 
 
-// route to get all weeks to main homepage
-router.get('/', async (req, res) => {
-  const weekListData = await Week.findAll().catch((err) => { 
-      res.json(err);
-    });
-      const weekList = weekListData.map((week) => week.get({ plain: true }));
-      res.render('homepage', { weekList, logged_in: req.session.logged_in });
-    });
 
 
   

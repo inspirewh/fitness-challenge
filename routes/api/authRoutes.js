@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.name = userData.name;
 
       res.status(200).json(userData);
     });
@@ -27,6 +28,10 @@ router.post('/', async (req, res) => {
 
 //login page > render login.handlebars
 router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+    }
     res.render('login', {layout: 'fullpage'})
     
 });
@@ -59,6 +64,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.name = userData.name;  
       req.session.logged_in = true;
       
       res.redirect('/');
@@ -72,6 +78,7 @@ router.post('/login', async (req, res) => {
 })
 
 
+
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -81,5 +88,6 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
 
 module.exports = router;
