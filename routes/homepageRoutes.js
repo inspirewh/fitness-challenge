@@ -3,10 +3,15 @@ const { User, Workout, Week, Progres} = require('../models');
 
 // route homepage - get all weeks to main homepage
 router.get('/', async (req, res) => {
-  const weekListData = await Week.findAll().catch((err) => { 
+  const weekListData = await Week.findAll({
+    order: [
+    [  'number', 'ASC']
+    ],
+  }).catch((err) => { 
       res.json(err);
     });
       const weekList = weekListData.map((week) => week.get({ plain: true }));
+      console.log(weekList)
       res.render('homepage', { 
         weekList, loggedIn: req.session.logged_in, name: req.session.name 
       });
